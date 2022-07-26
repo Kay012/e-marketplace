@@ -1,0 +1,63 @@
+npm init -y
+
+npm install => {
+
+bcrypt (https://auth0.com/blog/hashing-in-action-understanding-bcrypt/)
+
+cloudinary 
+(Cloudinary is an end-to-end image- and video-management solution for websites and mobile apps, covering everything from image and video uploads, storage, manipulations, optimizations to delivery)
+
+cookie-parser 
+(cookie-parser is a middleware which parses cookies attached to the client request object. To use it, we will require it in our index. js file; this can be used the same way as we use other middleware)
+
+concurrently 
+(Concurrently is an npm package that allows you to run multiple commands concurrently. A very well named package this one. https://martint86.github.io/concurrently/#:~:text=npm%20install%20concurrently%20%2D%2Dsave,remember%20to%20escape%20the%20quotes)
+
+cors
+(“CORS” stands for Cross-Origin Resource Sharing. It allows you to make requests from one website to another website in the browser, which is normally prohibited by another browser policy called the Same-Origin Policy (SOP).)
+
+dotenv 
+(dotenv allows you to separate secrets from your source code. This is useful in a collaborative environment (e.g., work, or open source) where you may not want to share your database login credentials with other people. Instead, you can share the source code while allowing other people to create their own . env file)
+
+express
+(It's a web framework that let's you structure a web application to handle multiple different http requests at a specific url. Express is a minimal, open source and flexible Node. js web app framework designed to make developing websites, web apps, & API's much easier.)
+
+express-fileupload
+(Simple Express middleware for uploading files. It parses multipart/form-data requests, extracts the files if available, and make them available under req. files property.)
+
+jsonwebtoken
+(The JSON web token (JWT) is one method for allowing authentication, without actually storing any information about the user on the system itself.)
+
+mongoose
+(Mongoose is an Object Data Modeling (ODM) library for MongoDB and Node. js. It manages relationships between data, provides schema validation, and is used to translate between objects in code and the representation of those objects in MongoDB.)
+
+nodemon -D(only for development)
+(helps develop node. js based applications by automatically restarting the node application when file changes in the directory are detected)
+}
+
+
+npx create-react-app client
+cd client
+
+npm install => {
+react-router-dom
+axios 
+react-paypal-express-checkout
+}
+
+on package.json change main value to server.js
+chamge scripts test to dev: nodemon server.js
+
+Go to MongoDB to Create a new project
+
+
+
+Deployment
+    // "start": "node server.js",
+    // "server": "nodemon server.js",
+    // "client": "cd client && npm run start",
+    // "server-install": "npm install",
+    // "client-install": "cd client && npm install",
+    // "install-all": "concurrently \"npm run server-install\" \"npm run client-install\"",
+    // "dev": "concurrently \"npm run server\" \"npm run client\"",
+    // "heroku-postbuild": "cd client && npm install && npm run build"

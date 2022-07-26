@@ -1,0 +1,151 @@
+.popup-box {
+    position: fixed;
+    background: #00000050;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 999;
+  }
+   
+  .box {
+    position: relative;
+    width: 70%;
+    margin: 0 auto;
+    height: 100%;
+    max-height: 80vh;
+    margin-top: calc(100vh - 85vh - 20px);
+    background: #fff;
+    border-radius: 4px;
+    padding: 20px;
+    border: 1px solid #999;
+    overflow: auto;
+  }
+   
+  .close-icon {
+    content: 'x';
+    cursor: pointer;
+    position: fixed;
+    right: calc(15% - 30px);
+    top: calc(100vh - 85vh - 33px);
+    background: #ededed;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    line-height: 20px;
+    text-align: center;
+    border: 1px solid #999;
+    font-size: 20px;
+  }
+
+
+
+.image__cardContainer_{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5vh;
+}
+
+.image_{
+    position: relative;
+    background-color: #fff;
+    padding: 20px;
+    max-width: 450px;
+    height: 65vh;
+    box-shadow: 0 18px 53px 0 rgba(0, 0, 0, 1);
+    background-size: cover;
+    background-position: center;
+    border-radius: 20px;
+    
+}
+.upload_{
+    max-width: 400px;
+    height: 400px;
+    width: 100%;
+    border: 1px solid #ddd;
+    margin: 20px 0;
+    position: relative;
+}
+
+.image__cardContainer_ form{
+    max-width: 400px;
+}
+
+#file_up_{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    outline: none;
+}
+
+#file_up_::before{
+    content: "+";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top:0;
+    left: 0;
+    background: white;
+    color: rgb(250, 200, 107);
+    font-size: 17rem;
+    text-align: center;
+    cursor: pointer;
+    margin: auto;
+}
+
+#file_img_{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top:0;
+    left: 0;
+    background: white;
+}
+#file_img_ img{
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+#file_img_ span{
+    position: absolute;
+    top: -13px;
+    right: -13px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    padding: 6px 10px;
+    cursor: pointer;
+    font-weight: 900;
+    color: crimson;
+}
+
+.row_btn_ {
+    width: 65%;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.row_btn_  a{
+    width: 50%;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    letter-spacing: 2px;
+    padding: 6px;
+}
+
+#btn_save {
+    background: #555;
+    margin-right: 5px;
+}
+
+#btn_cancel {
+    background: crimson;
+    margin-left: 5px;
+}
