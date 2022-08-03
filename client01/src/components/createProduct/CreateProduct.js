@@ -2,7 +2,8 @@ import axios from 'axios'
 import React, { useContext, useEffect, useState } from 'react'
 import { GlobalState } from '../../GlobalState'
 import Loading from '../../components/homepages/utils/loading/Loading'
-import { useHistory, useParams } from 'react-router'
+import { useParams } from 'react-router'
+import {useNavigate} from 'react-router-dom'
 import ChangeImgage from './ChangeImgage'
 
 const initialState= {
@@ -32,7 +33,7 @@ const CreateProduct = () => {
     const [isAdmin] = state.userAPI.isAdmin
 
     const params = useParams()
-    const history = useHistory()
+    const navigate = useNavigate()
 
     useEffect(() => {
         if(params.id){
@@ -120,7 +121,7 @@ const CreateProduct = () => {
             setOnEdit(false)
             setMainImage("")
             setProduct(initialState)
-            history.push('/')
+            navigate.push('/')
             
 
         }catch(err){

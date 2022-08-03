@@ -1,5 +1,5 @@
 import React, {useContext,} from 'react'
-import { Link, useHistory } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { GlobalState } from '../../../../GlobalState'
 
 const ProductItem = ({product, isAdmin,deleteProduct, handleCheck, isLoading,}) => {
@@ -8,7 +8,7 @@ const ProductItem = ({product, isAdmin,deleteProduct, handleCheck, isLoading,}) 
     // const isAdmin = state.userAPI.isAdmin
     const state = useContext(GlobalState)
     const addCart = state.userAPI.addCart
-    const history = useHistory()
+    const navigate = useNavigate()
 
     
 
@@ -18,7 +18,7 @@ const ProductItem = ({product, isAdmin,deleteProduct, handleCheck, isLoading,}) 
             {
                 isAdmin && <input type='checkbox' checked={product.checked} onChange={() => handleCheck(product._id)} />
             }
-            <img src={product.images.url} alt='' onClick={() => isAdmin? history.push(`/edit_product/${product?._id}`): history.push(`/details/${product?._id}`)}/>
+            <img src={product.images.url} alt='' onClick={() => isAdmin? navigate.push(`/edit_product/${product?._id}`): navigate.push(`/details/${product?._id}`)}/>
 
             <div className='product_box'>
                 <h2>{product.title}</h2>
