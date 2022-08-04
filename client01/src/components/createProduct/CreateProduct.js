@@ -5,6 +5,7 @@ import Loading from '../../components/homepages/utils/loading/Loading'
 import { useParams } from 'react-router'
 import {useNavigate} from 'react-router-dom'
 import ChangeImgage from './ChangeImgage'
+import PlusImg from '../../assets/plus image.jpeg'
 
 const initialState= {
     product_id: '',
@@ -195,14 +196,14 @@ const CreateProduct = () => {
                      onClick={() => otherImages?.length>0? handleReplaceImage(0) : handleAddImage()}>
                         {/* <img src="" alt=""/> */}
                         {/* <div style={{justifyContent:"center", alignItems:"center"}}> */}
-                        <img src={otherImages?.length>0?otherImages[0].url:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQe-j5PJRX4f6Ykaa2SrlVbJeiqGk0cRAzfUQ&usqp=CAU"} alt=''/>
+                        <img src={otherImages?.length>0?otherImages[0].url:PlusImg} alt=''/>
                         {/* </div> */}
                         
                     </div>
 
                     <div className='img' style={existingFileIndex===1? {borderRadius:"2px", opacity:0.9, borderBottom:"2px solid black"}: {border:"1px solid #ddd"}}
                      onClick={() => otherImages?.length>1? handleReplaceImage(1) : handleAddImage()}>
-                    <img src={otherImages?.length>1?otherImages[1].url:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQe-j5PJRX4f6Ykaa2SrlVbJeiqGk0cRAzfUQ&usqp=CAU"} alt=''/>
+                    <img src={otherImages?.length>1?otherImages[1].url:PlusImg} alt=''/>
                     </div>
                 </div>
             </div>

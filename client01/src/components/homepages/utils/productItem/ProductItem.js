@@ -18,7 +18,7 @@ const ProductItem = ({product, isAdmin,deleteProduct, handleCheck, isLoading,}) 
             {
                 isAdmin && <input type='checkbox' checked={product.checked} onChange={() => handleCheck(product._id)} />
             }
-            <img src={product.images.url} alt='' onClick={() => isAdmin? navigate.push(`/edit_product/${product?._id}`): navigate.push(`/details/${product?._id}`)}/>
+            <img src={product.images.url} alt='' onClick={() => isAdmin? navigate(`/edit_product/${product?._id}`): navigate(`/details/${product?._id}`)}/>
 
             <div className='product_box'>
                 <h2>{product.title}</h2>
@@ -30,21 +30,21 @@ const ProductItem = ({product, isAdmin,deleteProduct, handleCheck, isLoading,}) 
                 {
                     isAdmin?
                     <>
-                    <Link id='btn_buy' to='#!' onClick={() =>deleteProduct(product)}>
+                    <Link id='btn_delete' to='#!' onClick={() =>deleteProduct(product)}>
                         Delete
                     </Link>
-                    <Link id='btn_view' to={`/edit_product/${product._id}`}>
+                    {/* <Link id='btn_view' to={`/edit_product/${product._id}`}>
                         Edit
-                    </Link> 
+                    </Link>  */}
                     </>
                     :
                     <>
                     <Link id='btn_buy' to='#!' onClick={() => addCart(product)}>
                         Buy
                     </Link>
-                    <Link id='btn_view' to={`/details/${product._id}`}>
+                    {/* <Link id='btn_view' to={`/details/${product._id}`}>
                         View
-                    </Link>
+                    </Link> */}
                     </>
 
                 }

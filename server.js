@@ -16,7 +16,15 @@ const app = express()
 app.use(express.json())
 app.use(cookieParser())
 app.use(cors())
-app.use(helmet())
+app.use(helmet.contentSecurityPolicy(
+    {
+        directives: {
+          defaultSrc: ["'self'"],
+          fontSrc: ["'self'", 'https://fonts.gstatic.com'],
+          imgSrc: ["'self'",'https://res.cloudinary.com'],
+        }
+    },
+))
 app.use(fileUpload({
     useTempFiles: true
 }))

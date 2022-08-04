@@ -48,7 +48,7 @@
 }
 
 .row_btn  a{
-    width: 50%;
+    width: 100%;
     text-align: center;
     text-transform: uppercase;
     text-decoration: none;
@@ -59,7 +59,12 @@
 }
 
 #btn_buy {
-    background: #555;
+    /* background: #555; */
+    background: teal;
+    margin-right: 5px;
+}
+#btn_delete{
+    background: crimson;
     margin-right: 5px;
 }
 
