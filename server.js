@@ -98,15 +98,24 @@ io.on('connection', (socket) => {
     
 
 const URI = process.env.MONGODB_URL
-mongoose.connect(URI, {
-    useCreateIndex: true,
-    useFindAndModify: false,
-    useNewUrlParser: true,
-    useUnifiedTopology: true    
-}, err => {
-    if (err) throw err;
-    else console.log('Connected to MongoDB')
+// mongoose.connect(URI, {
+//     useCreateIndex: true,
+//     useFindAndModify: false,
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true    
+// }, err => {
+//     if (err) throw err;
+//     else console.log('Connected to MongoDB')
+// })
+mongoose.connection.once('open', () => {
+    console.log('MongoDB connection ready')
 })
+
+mongoose.connection.on('error', (err) => {
+    console.error(err)
+})
+
+mongoose.connect(URI);
 
 if(process.env.NODE_ENV === 'production'){
     app.use(express.static('client01/build'))
