@@ -21,7 +21,7 @@ app.use(helmet.contentSecurityPolicy(
         directives: {
           defaultSrc: ["'self'"],
           fontSrc: ["'self'", 'https://fonts.gstatic.com'],
-          imgSrc: ['self','https://res.cloudinary.com', 'http://localhost:*'],
+          imgSrc: ["'self'",'https://res.cloudinary.com', 'http://localhost:*'],
           connectSrc: [
             "'self'",
             "http://localhost:*",
