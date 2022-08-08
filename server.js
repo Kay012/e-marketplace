@@ -21,7 +21,7 @@ app.use(helmet.contentSecurityPolicy(
         directives: {
           defaultSrc: ["'self'"],
           fontSrc: ["'self'", 'https://fonts.gstatic.com'],
-          imgSrc: ['self','https://res.cloudinary.com'],
+          imgSrc: ['self','https://res.cloudinary.com', 'http://localhost:*'],
           connectSrc: [
             "'self'",
             "http://localhost:*",
@@ -46,7 +46,7 @@ app.use('/api', require('./routes/paymentRouter'))
 const server = http.createServer(app)
 const io = new Server(server,{
     cors:{
-        origin: 'http://localhost:3000',
+        origin: ['http://localhost:3000','https://e-marketplace1.herokuapp.com'],
         methods: ['GET', 'POST']
     }
 })
