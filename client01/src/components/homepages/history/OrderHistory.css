@@ -20,6 +20,10 @@ th, td{
     padding: 10px;
     text-transform: capitalize;
 }
+#hstory{
+    color: rgb(3, 165, 206);
+    text-align: center;
+}
 table a{
     color: rgb(3, 165, 206);
 }

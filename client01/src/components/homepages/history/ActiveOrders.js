@@ -64,7 +64,7 @@ const ActiveOrders = () => {
         <div  className="history-page">
             <h2>Pending Orders</h2>
             <h4>You have {sortedDisplay.length} pending orders</h4>
-            <Link to='/history'>view history</Link>
+            <Link id="hstory" to='/history'>view history</Link>
                 <table>
                     <thead>
                         <tr>
