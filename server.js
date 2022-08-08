@@ -19,9 +19,9 @@ app.use(cors())
 app.use(helmet.contentSecurityPolicy(
     {
         directives: {
-          defaultSrc: ["'self', 'https://res.cloudinary.com"],
+          defaultSrc: ["'self'"],
           fontSrc: ["'self'", 'https://fonts.gstatic.com'],
-        //   imgSrc: ["'self'",'https://res.cloudinary.com', 'http://localhost:*', 'https://e-marketplace1.herokuapp.com'],
+          imgSrc: ["'self'",'https://res.cloudinary.com', 'http://localhost:*', 'https://e-marketplace1.herokuapp.com'],
           connectSrc: [
             "'self'",
             "http://localhost:*",
