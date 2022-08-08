@@ -52,7 +52,7 @@ const Header = () => {
     const loggedRouter = () => {
         return (
             <>
-                <li><Link to='/history' onClick={() =>setMenu(!menu)}>{isAdmin? "History" :"My Orders"}</Link></li>
+                {!isAdmin && <li><Link to='/history' onClick={() =>setMenu(!menu)}>My Orders</Link></li>}
                 <li><Link to='/' onClick={() => {logoutUser();setMenu(!menu)}}>Logout</Link></li>
             </>
         )
