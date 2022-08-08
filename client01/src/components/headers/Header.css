@@ -14,7 +14,7 @@ header .logo {
 }
 
 header .logo > h1 > a {
-    text-transform: uppercase;
+    text-transform: lowercase;
     text-decoration: none;
     color: #555
 }
