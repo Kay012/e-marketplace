@@ -2,6 +2,8 @@ import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react'
 // import { Link } from 'react-router-dom';
 import { GlobalState } from '../../../GlobalState'
+import { Link, useNavigate } from 'react-router-dom'
+
 // import PayPalButton from './PayPalButton'
 
 const Cart = () => {
@@ -13,6 +15,8 @@ const Cart = () => {
     const [token] = state.token
     const [socket] = state.userAPI.socket
     const getHistory = state.userAPI.getHistory
+
+    const navigate = useNavigate()
     // const [callback, setCallback] = state.userAPI.callback
     
 
@@ -125,7 +129,7 @@ const Cart = () => {
             {
                 cart?.map(product => (
                     <div className='details cart' key={product._id}>
-                        <img src={product.images.url} alt="" className='img_container'/>
+                        <img src={product.images.url} alt="" className='img_container' onClick={() => navigate(`/details/${product?._id}`)}/>
                         <div className='details_box'>
                             <h2>{product.title}</h2>
                             {/* <h6>#id: {product.product_id}</h6> */}

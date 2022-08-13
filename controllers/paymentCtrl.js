@@ -46,8 +46,8 @@ const paymentCtrl = {
                 orderItems.push(newOrderItem)
 
                 
-                vendors.includes({vendor: item.createdBy.vendorId})? pass : vendors.push({vendor: item.createdBy.vendorId, isShipped:false})
-                sendVendors.includes(item.createdBy.vendorId)? pass : sendVendors.push(item.createdBy.vendorId)
+                vendors.includes({vendor: item.createdBy.vendorId})? {} : vendors.push({vendor: item.createdBy.vendorId, isShipped:false})
+                sendVendors.includes(item.createdBy.vendorId)? {} : sendVendors.push(item.createdBy.vendorId)
             })
             
             const newOrder = new order({
