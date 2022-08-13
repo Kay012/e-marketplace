@@ -21,7 +21,7 @@ const ProductItem = ({product, isAdmin,deleteProduct, handleCheck, isLoading,}) 
             <img src={product.images.url} alt='' onClick={() => isAdmin? navigate(`/edit_product/${product?._id}`): navigate(`/details/${product?._id}`)}/>
 
             <div className='product_box'>
-                <h2>{product.title}</h2>
+                <h3>{product.title}</h3>
                 <span>R{product.price}</span>
                 <p>{product.description}</p>
             </div>

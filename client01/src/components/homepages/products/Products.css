@@ -1,7 +1,7 @@
 .products{
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(10.6rem, 1fr)); /*was 12.5ren*/
     justify-items: center;
     margin: 20px 0;
     /* overflow: hidden; */
