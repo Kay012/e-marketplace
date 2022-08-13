@@ -16,7 +16,11 @@ const ActiveOrders = () => {
     const [sortedDisplay, setSortedDisplay] = useState([])
     
     useEffect(() => {
-        if(history){
+
+        let isMounted = true;
+        if (isMounted) {
+            console.log(history)
+                    if(history){
             history.forEach(item => {
                 item.vendors.forEach(vendor => {
                     if(vendor.vendor === userId && !vendor.isShipped){
@@ -27,27 +31,35 @@ const ActiveOrders = () => {
                 })
             })
         }
+        console.log(display)
+        }
+        return () => { isMounted = false }
     },[history, notifications, userId])
 
-    useEffect(()=>{
-
-        if(token){
-            const clearNotifications = async () => {
-                await axios.delete('/api/clearNotifications', {
-                    headers:{Authorization:token}
-                })
-            }
-            if(notifications){
-                clearNotifications()
-                setNotifications([])
-            }
-        }
-    },[token, notifications, setNotifications])
+    // useEffect(()=>{
+    //     let isMounted = true;
+    //     if (isMounted) {
+    //     if(token){
+    //         const clearNotifications = async () => {
+    //             await axios.delete('/api/clearNotifications', {
+    //                 headers:{Authorization:token}
+    //             })
+    //         }
+    //         if(notifications){
+    //             clearNotifications()
+    //             // setNotifications([])
+    //         }
+    //     }
+    // }
+    //     return () => { isMounted = false }
+    // },[token, notifications])
 
 
     useEffect(() => {
         // setIsLoading(true)
-        if(display?.length > 1)
+        let isMounted = true;
+        if (isMounted) {
+        if(display.length > 1)
         {
             setSortedDisplay(display.sort((a, b) => (new Date(b.createdAt) - 
             new Date(a.createdAt)
@@ -55,16 +67,17 @@ const ActiveOrders = () => {
         }
         else setSortedDisplay(display)
         // setIsLoading(false)
-
+    }
+        return () => { isMounted = false }
     }, [display])
 
 
     
     return (
-        <div  className="history-page">
+        <div className="history-page">
             <h2>Pending Orders</h2>
             <h4>You have {sortedDisplay.length} pending orders</h4>
-            <Link id="hstory" to='/history'>view history</Link>
+            <span><Link id="hstory" to='/history'>view history</Link></span>
                 <table>
                     <thead>
                         <tr>

@@ -29,9 +29,9 @@ const OrderHistory = () => {
         }
     },[history, isAdmin,userId])
     return (
-        <div  className="history-page">
+        <div className="history-page">
             <h2>History</h2>
-            <h4>You have {display.length} ordered</h4>
+            <h4>You have {display?.length} hostorical orders</h4>
                 <table>
                     <thead>
                         <tr>
@@ -42,7 +42,7 @@ const OrderHistory = () => {
                     </thead>
                     <tbody>
                         {
-                            display.map((item) => (
+                            display?.map((item) => (
                                 <tr key={item._id}>
                                     <td>{item._id}</td>
                                     <td>{new Date(item.createdAt).toUTCString().substring(0,17)} {new Date(item.createdAt).getHours()}h:{new Date(item.createdAt).getMinutes()}</td>

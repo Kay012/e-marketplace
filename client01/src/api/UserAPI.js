@@ -29,7 +29,7 @@ const UserAPI = (token) => {
             setUserId(res.data._id)
             setNotifications(res.data.notifications)
 
-            const sockt = io("ws://localhost:5000") || io("ws://e-marketplace1.herokuapp.com");
+            const sockt = io("ws://localhost:5000");
             sockt.emit("addUser", (res.data._id))
             
             setSocket(sockt)
@@ -52,6 +52,13 @@ const UserAPI = (token) => {
     const getHistory = async(token) => {
         const res = await axios.get('/user/history', {headers:{Authorization: token}})
         setHistory(res.data)
+    }
+
+    const clearNotifications = async () => {
+        await axios.delete('/api/clearNotifications', {
+            headers:{Authorization:token}
+        })
+        setNotifications([])
     }
 
     const addCart = async (product) => {
@@ -82,6 +89,7 @@ const UserAPI = (token) => {
         getUser:getUser,
         history: [history, setHistory],
         notifications: [notifications, setNotifications],
+        clearNotifications: clearNotifications,
         socket: [socket, setSocket],
         callback: [callback, setCallback]
         

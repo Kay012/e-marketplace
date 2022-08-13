@@ -25,7 +25,7 @@ const Cart = () => {
         
        
         const getTotal = () => {
-            const total = cart.reduce((prev, item) =>{
+            const total = cart?.reduce((prev, item) =>{
                 return prev + (item.price * item.quantity)
             }, 0)
 
@@ -33,7 +33,7 @@ const Cart = () => {
            
         }
         const getTotalQuantity =  () => {
-            const tot = cart.reduce((prev, item) =>{
+            const tot = cart?.reduce((prev, item) =>{
                 return prev + (item.quantity)
             }, 0)
 
@@ -117,13 +117,13 @@ const Cart = () => {
         
     }
 
-    if(cart.length === 0){
+    if(cart?.length === 0){
         return <h2 style={{textAlign: 'center', fontSize: '5rem'}}>Cart Empty</h2>
     }
     return ( 
         <div>
             {
-                cart.map(product => (
+                cart?.map(product => (
                     <div className='cart details' key={product._id}>
                         <img src={product.images.url} alt="" className='img_container'/>
                         <div className='details_box'>
