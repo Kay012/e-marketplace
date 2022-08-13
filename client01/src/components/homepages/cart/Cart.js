@@ -124,12 +124,12 @@ const Cart = () => {
         <div>
             {
                 cart?.map(product => (
-                    <div className='cart details' key={product._id}>
+                    <div className='details cart' key={product._id}>
                         <img src={product.images.url} alt="" className='img_container'/>
                         <div className='details_box'>
                             <h2>{product.title}</h2>
                             {/* <h6>#id: {product.product_id}</h6> */}
-                            <span>R {product.price * product.quantity}</span>
+                            <span>R {product.price}</span>
                             <p>{product.decription}</p>
                             <p>{product.content}</p>
                             {/* <p>Sold: {product.sold}</p> */}

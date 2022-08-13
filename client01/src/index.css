@@ -133,6 +133,7 @@ ul >li {
 
   .filter_menu input {
     margin: 0;
+    margin-left: 10px;
   }
 
   .filter_menu .sort {
