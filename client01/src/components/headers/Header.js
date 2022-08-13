@@ -70,7 +70,7 @@ const Header = () => {
 
             <div className='logo'>
                 <h1>
-                    <Link to='/' onClick={() =>setMenu(!menu)}>e-marketplace</Link>
+                    <Link to='/'>e-marketplace</Link>
                 </h1>
             </div>
 

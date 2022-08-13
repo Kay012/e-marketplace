@@ -140,8 +140,8 @@ ul >li {
   }
   .filter_menu .sort select{
     width: 100%;
-    min-height: 18.125rem;
-    margin: 5px 0
+    min-width: 18.125rem;
+    margin: 5px 0;
   }
   .login{
     padding: 30px 15px;
