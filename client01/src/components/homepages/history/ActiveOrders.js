@@ -31,7 +31,15 @@ const ActiveOrders = () => {
                 })
             })
         }
-        console.log(display)
+             const clearNotifications = async () => {
+                await axios.delete('/api/clearNotifications', {
+                    headers:{Authorization:token}
+                })
+            }
+            if(notifications){
+                clearNotifications()
+                // setNotifications([])
+            }
         }
         return () => { isMounted = false }
     },[history, notifications, userId])
