@@ -54,11 +54,16 @@ const UserAPI = (token) => {
         setHistory(res.data)
     }
 
-    const clearNotifications = async () => {
-        await axios.delete('/api/clearNotifications', {
+    const clearNotifications = async (paymentId) => {
+        await axios.patch('/api/clearNotifications', {paymentId}, {
             headers:{Authorization:token}
         })
-        setNotifications([])
+        notifications.forEach((item, index) => {
+            if(item === paymentId){
+                notifications.splice(index, 1)
+            }
+        })
+        setNotifications([...notifications])
     }
 
     const addCart = async (product) => {

@@ -17,66 +17,71 @@ const ActiveOrders = () => {
     
     useEffect(() => {
 
-        let isMounted = true;
-        if (isMounted) {
-            console.log(history)
-                    if(history){
+        // let isMounted = true;
+        // if (isMounted) {
+            // console.log(history)
+        let listToDisplay = []
+        
+        if(history){console.log(history)
             history.forEach(item => {
                 item.vendors.forEach(vendor => {
                     if(vendor.vendor === userId && !vendor.isShipped){
                         const isIncluded = notifications.includes(item._id)
-                        if(isIncluded) setDisplay(display => [...display, {...item, isNew:true}])
-                        else setDisplay(display => [...display, item])
+                        const isExistinList = listToDisplay.find(order => order._id === item._id)
+                        if(isExistinList) return
+                        if(isIncluded) {
+                            listToDisplay.push({...item, isNew:true})
+                            // setDisplay(display => [...display, {...item, isNew:true}])
+                        }
+                        else {
+                            listToDisplay.push(item)
+                            // setDisplay(display => [...display, item])
+                        }
                     }
                 })
             })
+
+            setDisplay(listToDisplay)
         }
-             const clearNotifications = async () => {
-                await axios.delete('/api/clearNotifications', {
-                    headers:{Authorization:token}
-                })
-            }
-            if(notifications){
-                clearNotifications()
-                // setNotifications([])
-            }
-        }
-        return () => { isMounted = false }
-    },[history, notifications, userId])
+            
+        // }
+        // return () => { isMounted = false }
+    },[history, notifications,setNotifications, userId])
 
     // useEffect(()=>{
     //     let isMounted = true;
     //     if (isMounted) {
-    //     if(token){
-    //         const clearNotifications = async () => {
-    //             await axios.delete('/api/clearNotifications', {
-    //                 headers:{Authorization:token}
-    //             })
-    //         }
-    //         if(notifications){
-    //             clearNotifications()
-    //             // setNotifications([])
+    //         if(token){
+    //             const clearNotifications = async () => {
+    //                 await axios.delete('/api/clearNotifications', {
+    //                     headers:{Authorization:token}
+    //                 })
+    //             }
+    //             if(notifications){
+    //                 clearNotifications()
+    //                 // setNotifications([])
+    //             }
     //         }
     //     }
-    // }
     //     return () => { isMounted = false }
     // },[token, notifications])
 
 
     useEffect(() => {
         // setIsLoading(true)
-        let isMounted = true;
-        if (isMounted) {
+        // let isMounted = true;
+        // if (isMounted) {
         if(display.length > 1)
         {
-            setSortedDisplay(display.sort((a, b) => (new Date(b.createdAt) - 
-            new Date(a.createdAt)
-            )))
+            let sorted = display.sort((a, b) => (new Date(b.createdAt) - 
+            new Date(a.createdAt)))
+            setSortedDisplay(sorted)
+            
         }
         else setSortedDisplay(display)
         // setIsLoading(false)
-    }
-        return () => { isMounted = false }
+    // }
+        // return () => { isMounted = false }
     }, [display])
 
 

@@ -13,15 +13,18 @@ const OrderHistory = () => {
     
     useEffect(() => {
         if(history){
+            let listToDisplay = []
             if(isAdmin)
             {
                 history.forEach(item => {
-                item.vendors.forEach(vendor => {
+                    item.vendors.forEach(vendor => {
                         if(vendor.vendor === userId && vendor.isShipped){
-                        setDisplay(display => [...display, item])
+                        // setDisplay(display => [...display, item])
+                        listToDisplay.push(item)
                         }
                     })
                 })
+                setDisplay(listToDisplay)
             }
             else{
                 setDisplay(history)

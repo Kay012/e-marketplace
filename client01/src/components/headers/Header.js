@@ -16,22 +16,24 @@ const Header = () => {
     const [notifications] = state.userAPI.notifications
     const [socket] = state.userAPI.socket
     const getUser = state.userAPI.getUser
+    const getHistory = state.userAPI.getHistory
     const [token] = state.token
 
     useEffect(() => {
-        let isMounted = true;
+        // let isMounted = true;
         const getOrder = () => {
             if(socket)
             {
                 socket.on("getNewOrder", () =>{
-                    if (isMounted) {
+                    // if (isMounted) {
                         getUser(token)
-                    }
+                        getHistory(token)
+                    // }
                 })
             }
         }
         getOrder()
-        return () => { isMounted = false }
+        // return () => { isMounted = false }
     },[socket, getUser,token])
 
     const logoutUser = async() => {
@@ -86,20 +88,32 @@ const Header = () => {
             </ul>
 
             {
-                isAdmin? 
+                isAdmin && 
                 <div className='cart-icon'>
                     <span>{notifications.length}</span>
                     <Link to='/activeOrders'>
                     <img src={Cart} alt='' width='30'/>
                     </Link>
                 </div>
-                : <div className='cart-icon'>
+                
+            }
+            {
+                isLogged && !isAdmin &&
+                <div className='cart-icon'>
                     <span>{cart.length}</span>
                     <Link to='/cart'>
-                    <img src={Cart} alt='' width='30'/>
+                        <img src={Cart} alt='' width='30'/>
                     </Link>
                 </div>
             }
+            {
+                !isLogged && !isAdmin &&
+                <div className='cart-icon'>
+                    <span>{0}</span>
+                    <Link to='/'>
+                    <img src={Cart} alt='' width='30'/>
+                </Link>
+         </div>}
 
         </header>
     )

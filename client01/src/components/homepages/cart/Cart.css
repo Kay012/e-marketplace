@@ -23,6 +23,17 @@
     color: crimson;
 }
 
+.total button{
+    background: teal;
+    color: white;
+    margin-top: 10px;
+    padding: 10px 25px;
+    display: inline-block; 
+    text-transform: uppercase;
+    letter-spacing: 2px;   
+    text-decoration: none;
+}
+
 .cart{
     position: relative;
     border: 1px solid #ccc;

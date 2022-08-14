@@ -11,6 +11,8 @@ const OrderDetails = () => {
     const [orderItems, setOrderItems] = useState([])
     const [totalQuantity, setTotalQuantity] = useState(0);
     const [total, setTotal] = useState(0.0)
+    const clearNotifications = state.userAPI.clearNotifications
+    const [notifications, setNotifications] = state.userAPI.notifications
     const params = useParams()
 
     useEffect(() => {
@@ -65,6 +67,24 @@ const OrderDetails = () => {
             });
         }
     }, [params, orderDetails, history, isAdmin, userId])
+
+    useEffect(()=>{
+        let isMounted = true;
+        if (isMounted) {
+            // if(token){
+            //     const clearNotifications = async () => {
+            //         await axios.delete('/api/clearNotifications', {paymentId:params?.id}, {
+            //             headers:{Authorization:token}
+            //         })
+            //     }
+                if(notifications){
+                    clearNotifications(params.id)
+                    // setNotifications([])
+                }
+            // }
+        }
+        return () => { isMounted = false }
+    },[notifications, params])
 
 
 

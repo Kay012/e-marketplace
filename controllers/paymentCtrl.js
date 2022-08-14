@@ -45,9 +45,17 @@ const paymentCtrl = {
                 }
                 orderItems.push(newOrderItem)
 
-                
-                vendors.includes({vendor: item.createdBy.vendorId})? {} : vendors.push({vendor: item.createdBy.vendorId, isShipped:false})
-                sendVendors.includes(item.createdBy.vendorId)? {} : sendVendors.push(item.createdBy.vendorId)
+                const findVendor = vendors.find(vendor => vendor.vendor === item.createdBy.vendorId);
+                if(!findVendor){
+                    vendors.push({vendor: item.createdBy.vendorId, isShipped:false});
+                }
+
+                const findSendVendor = sendVendors.find( sendVendor => sendVendor ===item.createdBy.vendorId);
+                if(!findSendVendor){
+                    sendVendors.push(item.createdBy.vendorId)
+                }
+                // vendors.includes({vendor: item.createdBy.vendorId})? {} : vendors.push({vendor: item.createdBy.vendorId, isShipped:false})
+                // sendVendors.includes(item.createdBy.vendorId)? {} : sendVendors.push(item.createdBy.vendorId)
             })
             
             const newOrder = new order({
@@ -61,7 +69,7 @@ const paymentCtrl = {
             })
             const saveOrder = await newOrder.save()
             vendors.forEach(async (vendor) => {
-                await VendorUser.updateOne({_id:vendor.vendor}, {$push:{notifications:saveOrder._id}}, {upsert:true})
+                await VendorUser.updateOne({_id:vendor.vendor}, {$push:{notifications:(saveOrder._id).toString()}}, {upsert:true})
             })
             cart.filter(item => {
                 return sold(item._id, item.quantity, item.sold)
@@ -77,7 +85,7 @@ const paymentCtrl = {
     },
     clearNotifications: async(req, res)=>{
         try{
-            await VendorUser.updateOne({_id:req.user.id}, {$set:{notifications:[]}}, {upsert:true})
+            await VendorUser.updateOne({_id:req.user.id}, {$pull:{notifications:req.body.paymentId}}, {upsert:true})
             return res.json({msg: "Order Success!"})
         }catch(err){
             return res.status(500).json({msg: err.message})
