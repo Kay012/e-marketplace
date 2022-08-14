@@ -26,7 +26,7 @@ app.use(helmet.contentSecurityPolicy(
             "'self'",
             "http://localhost:*",
             "ws://localhost:*",
-            "wss://localhost:*"
+            "wss://e-marketplace1.herokuapp.com"
         ]
         }
     },
