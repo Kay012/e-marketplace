@@ -25,7 +25,8 @@ app.use(helmet.contentSecurityPolicy(
           connectSrc: [
             "'self'",
             "http://localhost:*",
-            "ws://localhost:*"
+            "ws://localhost:*",
+            "wss://localhost:*"
         ]
         }
     },
