@@ -90,9 +90,9 @@ const Header = () => {
             {
                 isAdmin && 
                 <div className='cart-icon'>
-                    <span>{notifications.length}</span>
                     <Link to='/activeOrders'>
-                    <img src={Cart} alt='' width='30'/>
+                        <span>{notifications.length}</span>
+                        <img src={Cart} alt='' width='30'/>
                     </Link>
                 </div>
                 
@@ -100,8 +100,8 @@ const Header = () => {
             {
                 isLogged && !isAdmin &&
                 <div className='cart-icon'>
-                    <span>{cart.length}</span>
                     <Link to='/cart'>
+                        <span>{cart.length}</span>
                         <img src={Cart} alt='' width='30'/>
                     </Link>
                 </div>
@@ -109,11 +109,13 @@ const Header = () => {
             {
                 !isLogged && !isAdmin &&
                 <div className='cart-icon'>
-                    <span>{0}</span>
-                    <Link to='/'>
-                    <img src={Cart} alt='' width='30'/>
-                </Link>
-         </div>}
+                    
+                    <Link to='/login'>
+                        <span>{0}</span>
+                        <img src={Cart} alt='' width='30'/>
+                    </Link>
+            </div>
+            }
 
         </header>
     )

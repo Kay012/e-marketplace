@@ -29,7 +29,7 @@ const UserAPI = (token) => {
             setUserId(res.data._id)
             setNotifications(res.data.notifications)
 
-            const sockt = io("wss://e-marketplace1.herokuapp.com");
+            const sockt = io("wss://https.e-marketplace1.herokuapp.com");
             sockt.emit("addUser", (res.data._id))
             
             setSocket(sockt)
