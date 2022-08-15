@@ -34,7 +34,9 @@ const userCtrl = {
             res.cookie('refreshtoken', refreshtoken, {
                 httpOnly: true,
                 path: '/user/refresh_token',
-                maxAge: 7*24*60*60*1000 // 7d
+                maxAge: 7*24*60*60*1000, // 7d
+                sameSite:'none',
+                secure:true,
             })
             res.json({accesstoken, newUser})
         } catch (err) {
@@ -69,7 +71,10 @@ const userCtrl = {
             res.cookie('refreshtoken', refreshtoken, {
                 httpOnly: true,
                 path: '/user/refresh_token',
-                maxAge: 7*24*60*60*1000 // 7d
+                maxAge: 7*24*60*60*1000, // 7d
+                sameSite:'none',
+                secure:true
+                
             })
             res.json({accesstoken, newVendorUser})
         } catch (err) {
@@ -97,7 +102,9 @@ const userCtrl = {
             res.cookie('refreshtoken', refreshtoken, {
                 httpOnly: true,
                 path: '/user/refresh_token',
-                maxAge: 7*24*60*60*1000 // 7d
+                maxAge: 7*24*60*60*1000, // 7d
+                sameSite:'none',
+                secure:true
             })
             res.json({accesstoken})
             // res.json({msg: "Login successful"})

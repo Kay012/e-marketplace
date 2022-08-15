@@ -13,7 +13,6 @@ cloudinary.config({
 
 //upload image only admin
 uploadRouter.post('/upload', auth, authAdmin, (req, res) => {
-    console.log(req.files)
     try{
        
         if(!req.files || Object.keys(req.files).length ===0){
@@ -46,7 +45,6 @@ uploadRouter.post('/upload', auth, authAdmin, (req, res) => {
         // })
         // res.json('test upload')
     }catch(err) {
-        console.log(err.message)
         return res.status(500).json({msg: err.message})
     }
 })
