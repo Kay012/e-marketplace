@@ -13,14 +13,14 @@ cloudinary.config({
 
 //upload image only admin
 uploadRouter.post('/upload', auth, authAdmin, (req, res) => {
-
+    console.log(req.files)
     try{
        
         if(!req.files || Object.keys(req.files).length ===0){
-            return res.status(400).json('No files were uploaded')
+            return res.status(400).json({msg:'No files were uploaded'})
         }
         const file = req.files.file;
-        if( file.size > 1024 * 1024) // 1024 * 1024 = 1mb or 1024 * 1024 *5 = 5mb
+        if( file.size > 1024 * 1024 * 6) // 1024 * 1024 = 1mb or 1024 * 1024 *6 = 6mb
         {
             removeTmp(file.tempFilePath)
             return res.status(400).json({msg: 'File size too large'})
@@ -46,6 +46,7 @@ uploadRouter.post('/upload', auth, authAdmin, (req, res) => {
         // })
         // res.json('test upload')
     }catch(err) {
+        console.log(err.message)
         return res.status(500).json({msg: err.message})
     }
 })

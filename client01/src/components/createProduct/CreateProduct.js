@@ -67,7 +67,7 @@ const CreateProduct = () => {
 
             if(!file) return alert("No picture found")
 
-            if (file.size > 1024 *1024)  {          //1b
+            if (file.size > 1024 *1024 * 6)  {          //6mb
                 return alert("File size too large")
             }  
 
@@ -78,6 +78,7 @@ const CreateProduct = () => {
 
             formData.append('file', file)
             setIsLoading(true)
+            console.log(file)
 
             const res = await axios.post('/api/upload', formData, {
                 headers: {'content-type': 'multipart/form-data', Authorization: token}
