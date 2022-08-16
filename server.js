@@ -29,7 +29,7 @@ app.use(helmet.contentSecurityPolicy(
     },
 ))
 
-// app.use(helmet.frameguard());
+app.use(helmet.frameguard());
 app.use(helmet.hidePoweredBy());
 // app.use(helmet.hsts());
 app.use(helmet.ieNoOpen());
